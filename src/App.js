@@ -1,12 +1,24 @@
-import logo from './logo.svg';
-import Home from './components/Home';
+import Home from './Home';
+import Register from './Register';
+import Login from './Login';
+//import Navigation from './Navigation';
 import './App.css';
+//import Layout from ".components/Layout";
+import {
+  HashRouter,
+  Switch,
+  Route,
+} from "react-router-dom"
 
 function App() {
   return (
-    <div className="App">
-      <Home></Home>
-    </div>
+    <HashRouter>
+      <Switch>
+        <Route exact path="/register" component={Register}/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/" component={Home}/>
+      </Switch>
+    </HashRouter>
   );
 }
 
