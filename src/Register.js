@@ -5,7 +5,7 @@ import { Input, Label } from "reactstrap";
 const Register = () => {
     return(
         <>
-            <Nav defaultActiveKey="/home">
+            <Nav>
                 <Nav.Item>
                     <Nav.Link id="homepage" href="#/">Home Page</Nav.Link>
                 </Nav.Item>
