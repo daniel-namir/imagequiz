@@ -1,12 +1,11 @@
 import {Row, Col, Nav} from "react-bootstrap"
 import flowers from "./data"
-import Register from "./Register";
 const Home = () => {
     return(
         <>
         <Nav defaultActiveKey="/home">
             <Nav.Item>
-                <Nav.Link id="homepage" href="#home">Home Page</Nav.Link>
+                <Nav.Link id="homepage" href="#/">Home Page</Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link id="registerpage" href="#register">Register</Nav.Link>
