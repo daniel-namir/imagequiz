@@ -1,8 +1,25 @@
 import { Form, FormGroup, Button, Nav } from "react-bootstrap";
-import { Input, Label } from "reactstrap";
+import { useState } from "react";
+import users from "./communication/users";
 
 
 const Register = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    let saveUser = (e) => {
+        e.preventDefault();
+        users.push({username: username, password: password});
+    }
+
+    let onUsernameChanged = (e) => {
+        setUsername(e.target.value);
+    }
+
+    let onPasswordChanged = (e) => {
+        setPassword(e.target.value);
+    }
+
     return(
         <>
             <Nav>
@@ -16,29 +33,25 @@ const Register = () => {
                     <Nav.Link id="loginpage" href="#login">Login</Nav.Link>
                 </Nav.Item>
             </Nav>
-            <Form className="login-form">
+            <Form className="login-form" onSubmit={saveUser}>
                 <h1 className="text-center">Welcome New User!</h1>
                 <FormGroup>
-                    <Label>Frst Name: </Label>
-                    <Input type="text" placeholder="First Name"/>
+                    <Form.Label>Frst Name: </Form.Label>
+                    <Form.Control type="text" placeholder="First Name"/>
                 </FormGroup>
                 <FormGroup>
-                    <Label>Last Name: </Label>
-                    <Input type="text" placeholder="Last Name"/>
+                    <Form.Label>Last Name: </Form.Label>
+                    <Form.Control type="text" placeholder="Last Name"/>
                 </FormGroup>
                 <FormGroup>
-                    <Label>User Name: </Label>
-                    <Input type="text" placeholder="User Name"/>
+                    <Form.Label>Email: </Form.Label>
+                    <Form.Control type="email" placeholder="Email" value={username} onChange={onUsernameChanged}/>
                 </FormGroup>
                 <FormGroup>
-                    <Label>Email: </Label>
-                    <Input type="email" placeholder="Email"/>
+                    <Form.Label>Password: </Form.Label>
+                    <Form.Control type="password" placeholder="Password" value={password} onChange={onPasswordChanged}/>
                 </FormGroup>
-                <FormGroup>
-                    <Label>Password: </Label>
-                    <Input type="password" placeholder="Password"/>
-                </FormGroup>
-                <Button className="btn-lg btn-dark btn-block">Register</Button>
+                <Button variant="primary" type="submit">Register</Button>
             </Form>
         </>
     );

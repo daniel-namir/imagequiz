@@ -1,6 +1,11 @@
-import {Row, Col, Nav} from "react-bootstrap"
+import {Row, Col, Nav, Navbar} from "react-bootstrap"
 import flowers from "./data"
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 const Home = () => {
+    const [username] = useState('')
+    const location = useLocation();
+    
     return(
         <>
         <Nav>
@@ -12,6 +17,13 @@ const Home = () => {
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link id="loginpage" href="#login">Login</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                {(location.state && location.state.username) ?
+                <Navbar.Text>
+                    Signed in as: <a href="#login">{location.state.username}</a>
+                </Navbar.Text>
+                : ''}   
             </Nav.Item>
         </Nav>
         <Row>
