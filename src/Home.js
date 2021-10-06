@@ -1,5 +1,5 @@
 import {Row, Col, Nav, Navbar} from "react-bootstrap"
-import flowers from "./data"
+import flowers from './flowers';
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 const Home = () => {
