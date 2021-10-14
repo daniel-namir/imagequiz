@@ -1,4 +1,5 @@
-import { Nav, Form, FormGroup, Button } from "react-bootstrap";
+import './Styles/Login.css'
+import { Nav, Navbar, Container, Form, FormGroup, Button } from "react-bootstrap";
 import users from "./communication/users";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -28,28 +29,26 @@ const Login = () => {
 
     return(
         <>
-            <Nav>
-                <Nav.Item>
-                    <Nav.Link id="homepage" href="#/">Home Page</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link id="registerpage" href="#register">Register</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link id="loginpage" href="#login">Login</Nav.Link>
-                </Nav.Item>
-            </Nav>
-            <Form className="login-form" onSubmit={login}>
+            <Navbar bg="light" variant="light">
+                <Container>
+                <Nav className="me-auto">
+                    <Nav.Link id="home" href="#/">Home</Nav.Link>
+                    <Nav.Link id="login" href="#login">Login</Nav.Link>
+                    <Nav.Link id="register" href="#register">Register</Nav.Link>
+                </Nav>
+                </Container>
+            </Navbar>
+            <Form className="login-form" align="center" onSubmit={login}>
                 <h1 className="text-center">Welcome back!</h1>
                 <FormGroup>
-                    <Form.Label>Email: </Form.Label>
-                    <Form.Control type="email" placeholder="Email" value={username} onChange={onUsernameChanged}/>
+                    <Form.Label  id="email">Email: </Form.Label>
+                    <Form.Control type="email" id="input" placeholder="Email" value={username} onChange={onUsernameChanged}/>
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Password: </Form.Label>
-                    <Form.Control type="password" placeholder="Password" value={password} onChange={onPasswordChanged}/>
+                    <Form.Label  id="password">Password: </Form.Label>
+                    <Form.Control type="password" id="input" placeholder="Password" value={password} onChange={onPasswordChanged}/>
                 </FormGroup>
-                <Button variant="primary" type="submit">Log In</Button>
+                <Button id="button" variant="primary" type="submit">Log In</Button>
             </Form>
         </>
     );

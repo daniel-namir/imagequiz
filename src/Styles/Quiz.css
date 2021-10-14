@@ -1,0 +1,33 @@
+#question-number {
+    text-align: center;
+    font-size: 40px;
+    padding: 25px;
+}
+
+#image {
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#choices {
+    margin: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#score {
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+}
+
+#restart-button, #home-button {
+    text-align: center;
+    padding: 5px;
+    width: 80px;
+    top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}

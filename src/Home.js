@@ -1,5 +1,7 @@
-import {Row, Col, Nav, Navbar} from "react-bootstrap"
+import './Styles/Home.css'
+import {Row, Col, Nav, Navbar, Image, Container} from "react-bootstrap"
 import flowers from './flowers';
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 const Home = () => {
@@ -8,31 +10,24 @@ const Home = () => {
     
     return(
         <>
-        <Nav>
-            <Nav.Item>
-                <Nav.Link id="homepage" href="#/">Home Page</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link id="registerpage" href="#register">Register</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link id="loginpage" href="#login">Login</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                {(location.state && location.state.username) ?
-                <Navbar.Text>
-                    Signed in as: <a href="#login">{location.state.username}</a>
-                </Navbar.Text>
-                : ''}   
-            </Nav.Item>
-        </Nav>
+        <Navbar bg="light" variant="light">
+            <Container>
+            <Nav className="me-auto">
+                <Nav.Link id="home" href="#/">Home</Nav.Link>
+                <Nav.Link id="login" href="#login">Login</Nav.Link>
+                <Nav.Link id="register" href="#register">Register</Nav.Link>
+            </Nav>
+            </Container>
+        </Navbar>
         <Row>
             <h1>imagequiz - Home Page</h1>
         </Row>
         <Row>
             {flowers.map((flower) => (
-                <Col>
-                <img src={flower.picture} />
+                <Col key={flower.name}>
+                    <Link to={`/quiz/${flower.name}`}>
+                        <Image id="image"src={flower.picture}/>
+                    </Link>
                     <h3>{flower.name}</h3>
                 </Col>
             ))}
