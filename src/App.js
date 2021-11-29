@@ -9,6 +9,7 @@ import {
   HashRouter,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom"
 
 function App() {
@@ -17,10 +18,34 @@ function App() {
       <Switch>
         <Route exact path="/register" component={Register}/>
         <Route exact path="/login" component={Login}/>
+        <PrivateRoute exact path="/admin"> 
+          <Admin/> 
+        </PrivateRoute>
         <Route exact path="/" component={Home}/>
         <Route exact path="/quiz/:quizName" component={Quiz}/>
       </Switch>
     </HashRouter>
+  );
+}
+
+let PrivateRoute = ({ children, ...rest }) => {
+  let customer = localStorage.getItem('customer');
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        customer ? (
+           children
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
   );
 }
 

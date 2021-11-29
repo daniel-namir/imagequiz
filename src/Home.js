@@ -1,12 +1,22 @@
 import './Styles/Home.css'
 import {Row, Col, Nav, Navbar, Image, Container} from "react-bootstrap"
-import flowers from './flowers';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 const Home = () => {
     const [username] = useState('')
     const location = useLocation();
+    const [flowers, setFlowers] = useState([]);
+
+    useEffect(() => {
+        setCustomer(localStorage.getItem("customer"));
+        if (flowers.length === 0) {
+            api.getFlowers().then((x) => {
+                console.log("log", x);
+                setFlowers(x);
+            });
+        }
+    });
     
     return(
         <>
