@@ -1,4 +1,5 @@
 import './Styles/Home.css'
+import api from "./communication/api";
 import {Row, Col, Nav, Navbar, Image, Container} from "react-bootstrap"
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";

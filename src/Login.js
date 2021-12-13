@@ -1,8 +1,8 @@
 import './Styles/Login.css'
 import { Nav, Navbar, Container, Form, FormGroup, Button } from "react-bootstrap";
-import users from "./communication/users";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import api from  "./communication/api";
 
 const Login = () => {
 
@@ -11,13 +11,22 @@ const Login = () => {
     const history = useHistory();
 
     let login = (e) => {
-        e.preventDefault();
-        let found = users.find( x => x.username === username & x.password === password);
-        if (found) {
-            console.log(found);
-            history.push({pathname: '/', state: {username: username}});
-        }
-    }
+        api.login(username, password)
+            .then((x) => {
+                if (x.done) {
+                    console.log(x.done);
+                    localStorage.setItem("customer", username);
+                    props.onCustomerlogin();
+                    history.push({ pathname: "/" });
+                } else {
+                    alert("User not found. Please Sign Up.");
+                    history.push({ pathname: "/signup" });
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
 
     let onUsernameChanged = (e) => {
         setUsername(e.target.value);
